@@ -1,7 +1,7 @@
 <div id="header">
-    {{ if hugo.IsMultilingual }}
+    {{/*  {{ if hugo.IsMultilingual }}
         {{- partial "languages.html" . }}
-    {{- end -}}
+    {{- end -}}  */}}
     <div id="logo-wrapper"><h1><a href="{{ .Site.BaseURL }}" id="logo">
         {{- if .Site.Data.globalheader.image }}
             <img src="{{ .Site.Data.globalheader.image | relURL }}" alt="{{ .Site.Data.globalheader.image_alt }}" />

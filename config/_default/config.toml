@@ -23,6 +23,7 @@ defaultContentLanguage = "zh-cn"
     tag = "tags"
 
 [params]
+    IsMultilingual = false
     description = "A business/corporate style responsive site template."
     images = ['images/metaimage.jpg']
     show_post_dates = false
