@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A basic radial plot that encodes two values as the angle and radius of an arc.",
+  "width": 900,
+  "height": 700,
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "0",
+          "People": 4619544,
+          "gender": "Male",
+          "startAngle": 0,
+          "endAngle": 0.08114841166290862
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "0",
+          "People": 9735380,
+          "gender": "Male",
+          "startAngle": 0.08114841166290862,
+          "endAngle": 0.2521632615993628
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "5",
+          "People": 4465783,
+          "gender": "Male",
+          "startAngle": 0.2521632615993628,
+          "endAngle": 0.33061065755039587
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "5",
+          "People": 10552146,
+          "gender": "Male",
+          "startAngle": 0.33061065755039587,
+          "endAngle": 0.5159730845637795
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "10",
+          "People": 4057669,
+          "gender": "Male",
+          "startAngle": 0.5159730845637795,
+          "endAngle": 0.5872514173177965
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "10",
+          "People": 10563233,
+          "gender": "Male",
+          "startAngle": 0.5872514173177965,
+          "endAngle": 0.7728086021774323
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "15",
+          "People": 3774846,
+          "gender": "Male",
+          "startAngle": 0.7728086021774323,
+          "endAngle": 0.8391187741710499
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "15",
+          "People": 10237419,
+          "gender": "Male",
+          "startAngle": 0.8391187741710499,
+          "endAngle": 1.0189526043884225
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "20",
+          "People": 3694038,
+          "gender": "Male",
+          "startAngle": 1.0189526043884225,
+          "endAngle": 1.0838432767843187
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "20",
+          "People": 9731315,
+          "gender": "Male",
+          "startAngle": 1.0838432767843187,
+          "endAngle": 1.2547867196092897
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "25",
+          "People": 3389280,
+          "gender": "Male",
+          "startAngle": 1.2547867196092897,
+          "endAngle": 1.3143239139039782
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "25",
+          "People": 9659493,
+          "gender": "Male",
+          "startAngle": 1.3143239139039782,
+          "endAngle": 1.4840057081284697
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "30",
+          "People": 2918964,
+          "gender": "Male",
+          "startAngle": 1.4840057081284697,
+          "endAngle": 1.5352811786730105
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "30",
+          "People": 10205879,
+          "gender": "Male",
+          "startAngle": 1.5352811786730105,
+          "endAngle": 1.7145609669971036
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "35",
+          "People": 2633883,
+          "gender": "Male",
+          "startAngle": 1.7145609669971036,
+          "endAngle": 1.760828612019196
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "35",
+          "People": 11475182,
+          "gender": "Male",
+          "startAngle": 1.760828612019196,
+          "endAngle": 1.9624053894766245
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "40",
+          "People": 2261070,
+          "gender": "Male",
+          "startAngle": 1.9624053894766245,
+          "endAngle": 2.002124080143637
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "40",
+          "People": 11320252,
+          "gender": "Male",
+          "startAngle": 2.002124080143637,
+          "endAngle": 2.200979306855162
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "45",
+          "People": 1868413,
+          "gender": "Male",
+          "startAngle": 2.200979306855162,
+          "endAngle": 2.2338004570120455
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "45",
+          "People": 9925006,
+          "gender": "Male",
+          "startAngle": 2.2338004570120455,
+          "endAngle": 2.408146338909661
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "50",
+          "People": 1571038,
+          "gender": "Male",
+          "startAngle": 2.408146338909661,
+          "endAngle": 2.4357437031434626
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "50",
+          "People": 8507934,
+          "gender": "Male",
+          "startAngle": 2.4357437031434626,
+          "endAngle": 2.585196837615795
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "55",
+          "People": 1161908,
+          "gender": "Male",
+          "startAngle": 2.585196837615795,
+          "endAngle": 2.605607291266291
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "55",
+          "People": 6459082,
+          "gender": "Male",
+          "startAngle": 2.605607291266291,
+          "endAngle": 2.7190696254491633
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "60",
+          "People": 916571,
+          "gender": "Male",
+          "startAngle": 2.7190696254491633,
+          "endAngle": 2.7351704096015133
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "60",
+          "People": 5123399,
+          "gender": "Male",
+          "startAngle": 2.7351704096015133,
+          "endAngle": 2.8251697019917
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "65",
+          "People": 672663,
+          "gender": "Male",
+          "startAngle": 2.8251697019917,
+          "endAngle": 2.836985918924455
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "65",
+          "People": 4453623,
+          "gender": "Male",
+          "startAngle": 2.836985918924455,
+          "endAngle": 2.9152197083624163
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "70",
+          "People": 454747,
+          "gender": "Male",
+          "startAngle": 2.9152197083624163,
+          "endAngle": 2.923207941997267
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "70",
+          "People": 3792145,
+          "gender": "Male",
+          "startAngle": 2.923207941997267,
+          "endAngle": 2.989821993848584
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "75",
+          "People": 268211,
+          "gender": "Male",
+          "startAngle": 2.989821993848584,
+          "endAngle": 2.994533475466796
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "75",
+          "People": 2912655,
+          "gender": "Male",
+          "startAngle": 2.994533475466796,
+          "endAngle": 3.0456981200663558
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "80",
+          "People": 127435,
+          "gender": "Male",
+          "startAngle": 3.0456981200663558,
+          "endAngle": 3.047936684703961
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "80",
+          "People": 1902638,
+          "gender": "Male",
+          "startAngle": 3.047936684703961,
+          "endAngle": 3.081359042336986
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "85",
+          "People": 44008,
+          "gender": "Male",
+          "startAngle": 3.081359042336986,
+          "endAngle": 3.082132101171464
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "85",
+          "People": 970357,
+          "gender": "Male",
+          "startAngle": 3.082132101171464,
+          "endAngle": 3.0991777076850044
+        },
+        {
+          "Sex": "1",
+          "Year": "1900",
+          "Age": "90",
+          "People": 15164,
+          "gender": "Male",
+          "startAngle": 3.0991777076850044,
+          "endAngle": 3.099444083438641
+        },
+        {
+          "Sex": "1",
+          "Year": "2000",
+          "Age": "90",
+          "People": 336303,
+          "gender": "Male",
+          "startAngle": 3.099444083438641,
+          "endAngle": 3.1053516912647536
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "0",
+          "People": 4589196,
+          "gender": "Female",
+          "startAngle": 3.1053516912647536,
+          "endAngle": 3.185967000093888
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "0",
+          "People": 9310714,
+          "gender": "Female",
+          "startAngle": 3.185967000093888,
+          "endAngle": 3.3495220290204673
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "5",
+          "People": 4390483,
+          "gender": "Female",
+          "startAngle": 3.3495220290204673,
+          "endAngle": 3.426646680692364
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "5",
+          "People": 10069564,
+          "gender": "Female",
+          "startAngle": 3.426646680692364,
+          "endAngle": 3.603531915412069
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "10",
+          "People": 4001749,
+          "gender": "Female",
+          "startAngle": 3.603531915412069,
+          "endAngle": 3.673827939267158
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "10",
+          "People": 10022524,
+          "gender": "Female",
+          "startAngle": 3.673827939267158,
+          "endAngle": 3.8498868540547173
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "15",
+          "People": 3801743,
+          "gender": "Female",
+          "startAngle": 3.8498868540547173,
+          "endAngle": 3.9166695074942304
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "15",
+          "People": 9692669,
+          "gender": "Female",
+          "startAngle": 3.9166695074942304,
+          "endAngle": 4.086934082119845
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "20",
+          "People": 3751061,
+          "gender": "Female",
+          "startAngle": 4.086934082119845,
+          "endAngle": 4.152826439071242
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "20",
+          "People": 9324244,
+          "gender": "Female",
+          "startAngle": 4.152826439071242,
+          "endAngle": 4.316619140376264
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "25",
+          "People": 3236056,
+          "gender": "Female",
+          "startAngle": 4.316619140376264,
+          "endAngle": 4.373464752075649
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "25",
+          "People": 9518507,
+          "gender": "Female",
+          "startAngle": 4.373464752075649,
+          "endAngle": 4.540669940391266
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "30",
+          "People": 2665174,
+          "gender": "Female",
+          "startAngle": 4.540669940391266,
+          "endAngle": 4.58748725329169
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "30",
+          "People": 10119296,
+          "gender": "Female",
+          "startAngle": 4.58748725329169,
+          "endAngle": 4.765246096490678
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "35",
+          "People": 2347737,
+          "gender": "Female",
+          "startAngle": 4.765246096490678,
+          "endAngle": 4.806487207854103
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "35",
+          "People": 11635647,
+          "gender": "Female",
+          "startAngle": 4.806487207854103,
+          "endAngle": 5.010882765666798
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "40",
+          "People": 2004987,
+          "gender": "Female",
+          "startAngle": 5.010882765666798,
+          "endAngle": 5.046103019106267
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "40",
+          "People": 11488578,
+          "gender": "Female",
+          "startAngle": 5.046103019106267,
+          "endAngle": 5.247915115054576
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "45",
+          "People": 1648025,
+          "gender": "Female",
+          "startAngle": 5.247915115054576,
+          "endAngle": 5.276864857957937
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "45",
+          "People": 10261253,
+          "gender": "Female",
+          "startAngle": 5.276864857957937,
+          "endAngle": 5.457117363967461
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "50",
+          "People": 1411981,
+          "gender": "Female",
+          "startAngle": 5.457117363967461,
+          "endAngle": 5.4819206812317205
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "50",
+          "People": 8911133,
+          "gender": "Female",
+          "startAngle": 5.4819206812317205,
+          "endAngle": 5.6384565404132605
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "55",
+          "People": 1064632,
+          "gender": "Female",
+          "startAngle": 5.6384565404132605,
+          "endAngle": 5.657158212224484
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "55",
+          "People": 6921268,
+          "gender": "Female",
+          "startAngle": 5.657158212224484,
+          "endAngle": 5.778739455934538
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "60",
+          "People": 887508,
+          "gender": "Female",
+          "startAngle": 5.778739455934538,
+          "endAngle": 5.794329709980852
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "60",
+          "People": 5668961,
+          "gender": "Female",
+          "startAngle": 5.794329709980852,
+          "endAngle": 5.893912521818768
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "65",
+          "People": 640212,
+          "gender": "Female",
+          "startAngle": 5.893912521818768,
+          "endAngle": 5.905158693936088
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "65",
+          "People": 4804784,
+          "gender": "Female",
+          "startAngle": 5.905158693936088,
+          "endAngle": 5.989561091658322
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "70",
+          "People": 440007,
+          "gender": "Female",
+          "startAngle": 5.989561091658322,
+          "endAngle": 5.997290397661374
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "70",
+          "People": 5184855,
+          "gender": "Female",
+          "startAngle": 5.997290397661374,
+          "endAngle": 6.0883692461261765
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "75",
+          "People": 265879,
+          "gender": "Female",
+          "startAngle": 6.0883692461261765,
+          "endAngle": 6.093039763074283
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "75",
+          "People": 4355644,
+          "gender": "Female",
+          "startAngle": 6.093039763074283,
+          "endAngle": 6.169552421546435
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "80",
+          "People": 132449,
+          "gender": "Female",
+          "startAngle": 6.169552421546435,
+          "endAngle": 6.171879063738032
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "80",
+          "People": 3221898,
+          "gender": "Female",
+          "startAngle": 6.171879063738032,
+          "endAngle": 6.22847597140682
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "85",
+          "People": 48614,
+          "gender": "Female",
+          "startAngle": 6.22847597140682,
+          "endAngle": 6.2293299407346545
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "85",
+          "People": 1981156,
+          "gender": "Female",
+          "startAngle": 6.2293299407346545,
+          "endAngle": 6.264131571080949
+        },
+        {
+          "Sex": "2",
+          "Year": "1900",
+          "Age": "90",
+          "People": 20093,
+          "gender": "Female",
+          "startAngle": 6.264131571080949,
+          "endAngle": 6.264484531250944
+        },
+        {
+          "Sex": "2",
+          "Year": "2000",
+          "Age": "90",
+          "People": 1064581,
+          "gender": "Female",
+          "startAngle": 6.264484531250944,
+          "endAngle": 6.283185307179588
+        }
+      ],
+      "transform": [
+        {
+          "type": "formula",
+          "as": "gender",
+          "expr": "datum.Sex == '2' ? 'Female' : 'Male'"
+        },
+        {"type": "formula", "as": "People", "expr": "parseInt(datum.People)"},
+        {"type": "pie", "field": "People"}
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "r",
+      "type": "sqrt",
+      "domain": {"data": "table", "field": "People"},
+      "zero": true,
+      "range": [0, 300]
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": ["Male-2000", "Female-2000", "Male-1900", "Female-1900"],
+      "range": ["skyblue", "pink", "blue", "red"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"field": {"group": "width"}, "mult": 0.5},
+          "y": {"field": {"group": "height"}, "mult": 0.5},
+          "startAngle": {"field": "startAngle"},
+          "endAngle": {"field": "endAngle"},
+          "innerRadius": {"value": 2},
+          "outerRadius": {"scale": "r", "field": "People"},
+          "stroke": {"value": "#fff"}
+        },
+        "update": {
+          "fill": {
+            "scale": "color",
+            "signal": "datum.gender + '-' + datum.Year"
+          },
+          "tooltip": {
+            "signal": "{ 'Sex': datum.gender , 'Age':datum.Age , 'Amount': datum.People , 'Year':datum.Year}"
+          }
+        },
+        "hover": {"fill": {"value": "orange"}}
+      }
+    }
+  ],
+  "title": {
+    "text": "Population Pyramid Comparision  (1900 and 2000) ",
+    "anchor": "middle",
+    "fontSize": 20,
+    "offset": 2,
+    "fontStyle": "oblique"
+  },
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "left",
+      "title": "Category Legend",
+      "offset": -100
+    }
+  ],
+  "config": {
+    "config": {
+      "tooltip": {
+        "content": {
+          "field": "People",
+          "style": {
+            "background": "#fff",
+            "border": "1px solid #ccc",
+            "padding": "5px",
+            "border-radius": "4px"
+          }
+        }
+      }
+    }
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>

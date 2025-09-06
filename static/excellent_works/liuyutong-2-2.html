@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Primary completion rate, female (% of relevant age group).",
+  "width": 750,
+  "height": 550,
+  "padding": 8,
+  "title": {
+    "text": "Primary Completion Rate (female)",
+    "fontSize": 25,
+    "anchor": "start",
+    "fontWeight": "bold",
+    "offset": {"value": 10},
+    "dx": 200,
+    "dy": -5
+  },
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "year": 1990,
+          "educated": 48.4621582,
+          "c": 0,
+          "y0": 0,
+          "y1": 48.4621582
+        },
+        {
+          "year": 1990,
+          "educated": 103.9746475,
+          "c": 1,
+          "y0": 48.4621582,
+          "y1": 152.4368057
+        },
+        {
+          "year": 1992,
+          "educated": 48.6822319,
+          "c": 0,
+          "y0": 0,
+          "y1": 48.6822319
+        },
+        {
+          "year": 1992,
+          "educated": 102.3304062,
+          "c": 1,
+          "y0": 48.6822319,
+          "y1": 151.0126381
+        },
+        {
+          "year": 1994,
+          "educated": 48.94136047,
+          "c": 0,
+          "y0": 0,
+          "y1": 48.94136047
+        },
+        {
+          "year": 1994,
+          "educated": 105.5435867,
+          "c": 1,
+          "y0": 48.94136047,
+          "y1": 154.48494717
+        },
+        {
+          "year": 1996,
+          "educated": 49.51409912,
+          "c": 0,
+          "y0": 0,
+          "y1": 49.51409912
+        },
+        {
+          "year": 1996,
+          "educated": 102.2286987,
+          "c": 1,
+          "y0": 49.51409912,
+          "y1": 151.74279782
+        },
+        {
+          "year": 1998,
+          "educated": 48.56978989,
+          "c": 0,
+          "y0": 0,
+          "y1": 48.56978989
+        },
+        {
+          "year": 1998,
+          "educated": 101.2976837,
+          "c": 1,
+          "y0": 48.56978989,
+          "y1": 149.86747359
+        },
+        {
+          "year": 2000,
+          "educated": 48.49174118,
+          "c": 0,
+          "y0": 0,
+          "y1": 48.49174118
+        },
+        {
+          "year": 2000,
+          "educated": 101.3907089,
+          "c": 1,
+          "y0": 48.49174118,
+          "y1": 149.88245008
+        },
+        {
+          "year": 2002,
+          "educated": 50.76605988,
+          "c": 0,
+          "y0": 0,
+          "y1": 50.76605988
+        },
+        {
+          "year": 2002,
+          "educated": 99.86411285,
+          "c": 1,
+          "y0": 50.76605988,
+          "y1": 150.63017273
+        },
+        {
+          "year": 2004,
+          "educated": 52.63562012,
+          "c": 0,
+          "y0": 0,
+          "y1": 52.63562012
+        },
+        {
+          "year": 2004,
+          "educated": 102.5661926,
+          "c": 1,
+          "y0": 52.63562012,
+          "y1": 155.20181272
+        },
+        {
+          "year": 2006,
+          "educated": 57.70687866,
+          "c": 0,
+          "y0": 0,
+          "y1": 57.70687866
+        },
+        {
+          "year": 2006,
+          "educated": 101.8780899,
+          "c": 1,
+          "y0": 57.70687866,
+          "y1": 159.58496856
+        },
+        {
+          "year": 2008,
+          "educated": 59.5007515,
+          "c": 0,
+          "y0": 0,
+          "y1": 59.5007515
+        },
+        {
+          "year": 2008,
+          "educated": 105.560791,
+          "c": 1,
+          "y0": 59.5007515,
+          "y1": 165.0615425
+        }
+      ],
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["year"],
+          "sort": {"field": "c"},
+          "field": "educated"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "year",
+      "type": "band",
+      "range": "width",
+      "domain": {"data": "table", "field": "year"}
+    },
+    {
+      "name": "educated",
+      "type": "linear",
+      "range": "height",
+      "nice": true,
+      "zero": true,
+      "domain": [1, 130]
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": ["grey", "orange"],
+      "domain": {"data": "table", "field": "c"}
+    }
+  ],
+  "axes": [
+    {"orient": "bottom", "scale": "year", "zindex": 1},
+    {"orient": "left", "scale": "educated", "zindex": 1, "grid": true}
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "year", "field": "year"},
+          "width": {"scale": "year", "band": 1, "offset": -1},
+          "y": {"scale": "educated", "field": "y0"},
+          "y2": {"scale": "educated", "field": "educated"},
+          "fill": {"scale": "color", "field": "c"}
+        },
+        "update": {"fillOpacity": {"value": 1}},
+        "hover": {"fillOpacity": {"value": 0.5}}
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"value": 550},
+          "y": {"value": -50},
+          "text": {"value": "撒哈拉以南非洲（%）"},
+          "fontWeight": {"value": "bold"},
+          "fontSize": {"value": 12}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"value": 550},
+          "y": {"value": -30},
+          "text": {"value": "意大利（%）"},
+          "fontWeight": {"value": "bold"},
+          "fontSize": {"value": 12}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {"value": 530},
+          "y": {"value": -59},
+          "width": {"value": 10},
+          "height": {"value": 10},
+          "fill": {"value": "grey"}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "encode": {
+        "enter": {
+          "x": {"value": 530},
+          "y": {"value": -39},
+          "width": {"value": 10},
+          "height": {"value": 10},
+          "fill": {"value": "orange"}
+        }
+      }
+    }
+  ],
+  "config": {
+    "config": {
+      "tooltip": {
+        "content": {
+          "field": "People",
+          "style": {
+            "background": "#fff",
+            "border": "1px solid #ccc",
+            "padding": "5px",
+            "border-radius": "4px"
+          }
+        }
+      }
+    }
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>

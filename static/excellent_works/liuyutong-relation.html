@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《西游记》人物关系图</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+  <style>
+    #main {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="main"></div>
+
+  <script>
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var option = {
+      tooltip: {
+        formatter: '{b}'
+      },
+      title: {
+        text: '《西游记》人物关系图',
+        left: 'center',
+        top: 20,
+        textStyle: {
+          fontSize: 24,
+          fontWeight: 'bold',
+          color: '#333'
+        }
+      },
+      legend: {
+        data: [
+          { name: '主角', icon: 'circle', itemStyle: { color: '#ff0000' } },
+          { name: '神仙', icon: 'circle', itemStyle: { color: '#ffff00' } },
+          { name: '魔怪', icon: 'circle', itemStyle: { color: '#808080' } }
+        ],
+        orient: 'vertical',
+        itemWidth: 20,
+        itemHeight: 20,
+        textStyle: {
+          fontSize: 16
+        },
+        left: 200,
+        top: 200
+      },
+      series: [
+        {
+          type: 'graph',
+          layout: 'force',
+          roam: true,
+          draggable: true,
+          force: {
+            repulsion: 4000,
+            edgeLength: 200
+          },
+          data: [
+            { name: '唐三藏', category: 0, symbolSize: 60, itemStyle: { color: '#ff0000' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '孙悟空', category: 0, symbolSize: 60, itemStyle: { color: '#ff0000' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '猪八戒', category: 0, symbolSize: 60, itemStyle: { color: '#ff0000' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '沙僧', category: 0, symbolSize: 60, itemStyle: { color: '#ff0000' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '如来佛祖', category: 1, symbolSize: 60, itemStyle: { color: '#ffff00' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '观音菩萨', category: 1, symbolSize: 60, itemStyle: { color: '#ffff00' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '玉帝', category: 1, symbolSize: 60, itemStyle: { color: '#ffff00' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '七戒', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '白骨精', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '红孩儿', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '牛魔王', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }, // 新增节点
+            { name: '铁扇公主', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }, // 新增节点
+            { name: '白龙马', category: 0, symbolSize: 60, itemStyle: { color: '#ff0000' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }, // 新增节点
+            { name: '黄风怪', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }, // 新增节点
+            { name: '金角大王', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }, // 新增节点
+            { name: '银角大王', category: 2, symbolSize: 60, itemStyle: { color: '#808080' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }  // 新增节点
+          ],
+          links: [
+            { source: '唐三藏', target: '孙悟空', lineStyle: { color: '#ff0000', width: 2 }, label: { show: true, position: 'middle', formatter: '收伏孙悟空为徒弟' } },
+            { source: '唐三藏', target: '猪八戒', lineStyle: { color: '#ff0000', width: 2 }, label: { show: true, position: 'middle', formatter: '收伏猪八戒为徒弟' } },
+            { source: '唐三藏', target: '沙僧', lineStyle: { color: '#ff0000', width: 2 }, label: { show: true, position: 'middle', formatter: '收伏沙僧为徒弟' } },
+            { source: '孙悟空', target: '如来佛祖', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '与如来佛祖对抗' } },
+            { source: '孙悟空', target: '观音菩萨', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '帮助孙悟空' } },
+            { source: '孙悟空', target: '玉帝', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '闹天宫触怒玉帝' } },
+            { source: '孙悟空', target: '七戒', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '战胜七戒' } },
+            { source: '孙悟空', target: '白骨精', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '战胜白骨精' } },
+            { source: '孙悟空', target: '红孩儿', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '与红孩儿斗法' } },
+            { source: '猪八戒', target: '七戒', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '被七戒控制' } },
+            { source: '猪八戒', target: '白骨精', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '曾被白骨精迷惑' } },
+            { source: '沙僧', target: '如来佛祖', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '虔诚信奉如来佛祖' } },
+            { source: '沙僧', target: '观音菩萨', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '曾帮助沙僧' } },
+            { source: '沙僧', target: '玉帝', lineStyle: { color: '#ffff00', width: 2 }, label: { show: true, position: 'middle', formatter: '忠诚服侍玉帝' } },
+            { source: '孙悟空', target: '牛魔王', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '与牛魔王对抗' } }, // 新增连线
+            { source: '牛魔王', target: '铁扇公主', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '夫妻关系' } }, // 新增连线
+            { source: '孙悟空', target: '黄风怪', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '与黄风怪斗法' } }, // 新增连线
+            { source: '孙悟空', target: '金角大王', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '与金角大王对抗' } }, // 新增连线
+            { source: '孙悟空', target: '银角大王', lineStyle: { color: '#808080', width: 2 }, label: { show: true, position: 'middle', formatter: '与银角大王斗法' } } // 新增连线
+          ],
+          categories: [
+            { name: '主角' },
+            { name: '神仙' },
+            { name: '魔怪' }
+          ],
+          lineStyle: {
+            color: '#808080',
+            width: 4,
+            curveness: 0.5
+          },
+          emphasis: {
+            focus: 'adjacency',
+            lineStyle: {
+              width: 5
+            }
+          },
+          edgeSymbol: ['none', 'arrow'],
+          edgeSymbolSize: [4, 10]
+        }
+      ]
+    };
+
+    myChart.setOption(option);
+  </script>
+
+</body>
+
+</html>

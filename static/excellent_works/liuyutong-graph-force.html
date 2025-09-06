@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2024金球奖提名与国家队俱乐部关系图示例</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.3/echarts.min.js"></script>
+  <style>
+    /* 设置图表的宽高 */
+    #main {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="main"></div>
+
+  <script>
+    // 初始化图表
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 定义图的配置项
+    var option = {
+      tooltip: {
+        formatter: '{b}'
+      },
+      title: {
+        text: '2024金球奖提名球员与国家队俱乐部关系图示例', // 标题文本
+        left: 'center', // 标题位置（可选：'left', 'center', 'right'）
+        top: 20, // 标题位置（可选：'top', 'middle', 'bottom'）
+        textStyle: {
+          fontSize: 24, // 字体大小
+          fontWeight: 'bold', // 字体粗细
+          color: '#333' // 字体颜色
+        }
+      },
+      legend: {
+        data: [
+          { name: '球员', icon: 'circle', itemStyle: { color: '#33cc33' } }, // 绿色表示球员
+          { name: '国家队', icon: 'circle', itemStyle: { color: '#3399ff' } }, // 蓝色表示国家队
+          { name: '俱乐部', icon: 'circle', itemStyle: { color: '#ffcc33' } }  // 黄色表示俱乐部
+        ],
+        orient: 'vertical', // 图例垂直排列
+        itemWidth: 20, // 设置图例项的宽度
+        itemHeight: 20, // 设置图例项的高度
+        textStyle: {
+          fontSize: 16 // 设置字体大小
+        },
+        left: 200, // 图例位置在左侧
+        top: 200, // 图例位置在顶部
+      },
+      series: [
+        {
+          type: 'graph',
+          layout: 'force', // 使用力引导布局
+          roam: true, // 启用缩放和平移
+          draggable: true, // 节点可拖拽
+          force: {
+            repulsion: 400, // 节点之间的排斥力
+            edgeLength: 200 // 边的长度
+          },
+          data: [
+            { name: '皇家马德里', category: 0, symbolSize: 100, itemStyle: { color: '#ffcc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '曼彻斯特城', category: 1, symbolSize: 100, itemStyle: { color: '#ffdb33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '勒沃库森', category: 2, symbolSize: 100, itemStyle: { color: '#ffe033' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '埃斯顿维拉', category: 3, symbolSize: 100, itemStyle: { color: '#ffeb33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+
+            // 国家队，使用蓝色系，size变为70
+            { name: '西班牙队', category: 4, symbolSize: 70, itemStyle: { color: '#33aaff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '法国队', category: 5, symbolSize: 70, itemStyle: { color: '#3399ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '德国队', category: 6, symbolSize: 70, itemStyle: { color: '#3366ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '葡萄牙队', category: 7, symbolSize: 70, itemStyle: { color: '#3344ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '阿根廷队', category: 8, symbolSize: 70, itemStyle: { color: '#3399ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '英格兰队', category: 9, symbolSize: 70, itemStyle: { color: '#33ccff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '挪威队', category: 10, symbolSize: 70, itemStyle: { color: '#3399ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '巴西队', category: 11, symbolSize: 70, itemStyle: { color: '#3399ff' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+
+            // 球员，使用绿色系，size变为40
+            { name: '维尼修斯', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '贝林厄姆', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '卡瓦哈尔', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '姆巴佩', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '克罗斯', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '吕迪格', category: 0, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '鲁本迪亚斯', category: 1, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '哈兰德', category: 1, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '格里马尔多', category: 2, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } },
+            { name: '达米安马丁内斯', category: 3, symbolSize: 40, itemStyle: { color: '#33cc33' }, label: { show: true, position: 'inside', fontSize: 12, color: '#000' } }
+          ],
+          links: [
+            { source: '皇家马德里', target: '维尼修斯' },
+            { source: '皇家马德里', target: '贝林厄姆' },
+            { source: '皇家马德里', target: '卡瓦哈尔' },
+            { source: '皇家马德里', target: '姆巴佩' },
+            { source: '皇家马德里', target: '克罗斯' },
+            { source: '皇家马德里', target: '吕迪格' },
+            { source: '曼彻斯特城', target: '鲁本迪亚斯' },
+            { source: '曼彻斯特城', target: '哈兰德' },
+            { source: '曼彻斯特城', target: '罗德里' },
+            { source: '勒沃库森', target: '格里马尔多' },
+            { source: '埃斯顿维拉', target: '达米安马丁内斯' },
+
+            // 添加国家队与相应队员的链接
+            { source: '西班牙队', target: '卡瓦哈尔' },
+            { source: '西班牙队', target: '罗德里' },
+            { source: '西班牙队', target: '格里马尔多' },
+            { source: '法国队', target: '姆巴佩' },
+            { source: '德国队', target: '克罗斯' },
+            { source: '德国队', target: '吕迪格' },
+            { source: '葡萄牙队', target: '鲁本迪亚斯' },
+            { source: '英格兰队', target: '贝林厄姆' },
+            { source: '挪威队', target: '哈兰德' },
+            { source: '巴西队', target: '维尼修斯' },
+            { source: '阿根廷队', target: '达米安马丁内斯' },
+          ],
+          categories: [
+            { name: '皇家马德里' },
+            { name: '曼彻斯特城' },
+            { name: '勒沃库森' },
+            { name: '埃斯顿维拉' },
+            { name: '西班牙队' },
+            { name: '法国队' },
+            { name: '德国队' },
+            { name: '葡萄牙队' },
+            { name: '阿根廷队' },
+            { name: '英格兰队' },
+            { name: '挪威队' },
+            { name: '巴西队' },
+            { name: '球员' }, // 类别索引 0
+            { name: '国家队' }, // 类别索引 1
+            { name: '俱乐部' } // 类别索引 2
+          ],
+          lineStyle: {
+            color: '#808080', // 线的颜色
+            width: 4,
+            curveness: 0 // 线的弯曲程度
+          },
+          emphasis: {
+            focus: 'adjacency', // 鼠标悬停时高亮连接的节点和边
+
+            lineStyle: {
+              width: 3
+            }
+          },
+          edgeSymbol: ['none', 'arrow'], // 使用箭头指示方向
+          edgeSymbolSize: [4, 10] // 设置箭头的大小
+        }
+      ]
+    };
+
+    // 使用指定的配置项和数据显示图表
+    myChart.setOption(option);
+  </script>
+
+</body>
+
+</html>

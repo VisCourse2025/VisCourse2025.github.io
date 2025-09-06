@@ -1,0 +1,38 @@
+banner:
+  enable: true
+  image: "/images/poster.png"
+  contents: "周二 14:00-15:50 (N208) / 周一 8:00-9:50 (N3-101, 105, 109)"
+  button:
+    contents: "更多课程信息"
+    url: "/course-inf"
+items:
+  - type: highlights
+    items_per_row: 3
+    items:
+    - title: Esto Es Importante
+      icon: fa-paper-plane
+      content: >
+        Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl
+        amet mattis, sed a rutrum accumsan sed. Suspendisse eu.
+    - title: También Importante
+      icon: fa-pencil-alt
+      content: >
+        Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl
+        amet mattis, sed a rutrum accumsan sed. Suspendisse eu.
+    - title: Probablemente Importante
+      icon: fa-wrench
+      content: >
+        Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl
+        amet mattis, sed a rutrum accumsan sed. Suspendisse eu.
+  - type: heading
+    heading: Una cabecera gigante que puedes usar para lo que sea
+    contents: Con un subtítulo mucho mas pequeño colgando justo debajo
+  - type: posts
+    #heading: Recent Posts
+    content_type: posts
+    max: 4
+  - type: cta
+    contents: ¿Estás preparado para continuar tu búsqueda?
+    button:
+      contents: Inserta Moneda
+      url: "#"

@@ -1,0 +1,25 @@
+[[main]]
+    parent = "往届优秀案例"
+    name = "实验1 可视化设计"
+    pageRef = '/tags/可视化设计/'
+    weight = 30
+[[main]]
+    parent = "往届优秀案例"
+    name = "实验2 欺骗性可视化"
+    pageRef = '/tags/欺骗性可视化/'
+    weight = 31
+[[main]]
+    parent = "往届优秀案例"
+    name = "实验3 降维可视化"
+    pageRef = '/tags/降维可视化/'
+    weight = 32
+[[main]]
+    parent = "往届优秀案例"
+    name = "实验4 可视化相互交织的树木"
+    pageRef = '/tags/可视化相互交织的树木/'
+    weight = 33
+[[main]]
+    parent = "往届优秀案例"
+    name = "实验5 可视化网络数据"
+    pageRef = '/tags/可视化网络数据/'
+    weight = 33
