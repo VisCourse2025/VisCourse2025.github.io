@@ -1,4 +1,4 @@
-baseURL = "https://example.org/"
+baseURL = "https://vistech-course-sdu-2025.github.io/site/"
 languageCode = "zh-cn"
 title = "可视化技术(2025-2026第一学期)"
 theme = "hugo-arcana"
