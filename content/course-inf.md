@@ -2,7 +2,7 @@
 title: "课程信息"
 # description: "All content, all the time."
 menu: main
-weight: 80
+weight: 15
 # image: images/banner.jpg
 # image_alt: "Hello!"
 # tags: ["examples", "content"]
@@ -12,7 +12,6 @@ weight: 80
 - 时间：周二 14:00-15:50 (N208) / 周一 8:00-9:50 (N3-101, 105, 109)
 - 助教：张景赫（2025级硕士） 、王文嵩（2024级硕士）、王阳（2024级硕士）
 - 答疑：周五 10:10-12:00 (N3-412)
-- QQ群号：1057859402
 
 ### 培养目标
 
@@ -37,8 +36,26 @@ weight: 80
 
 ### 课表
 
-![课表](/images/course_calendar.png)
+<!-- ![课表](/images/course_calendar.png) -->
 
+| 上课日期 | 类别         | 授课内容                                   | 周次   | 实验内容（5+1）|
+|:--------:|:------------:|:------------------------------------------:|:------:|:------------------------------------------:|
+| 20250902 | 入门         | 可视化技术概述、课程考核、可视化学科发展脉络 | 第一周 | Assignment 1: Visualization Design for Small Dataset |
+| 20250909 | 入门         | 可视化实践技术入门                         | 第二周 | Assignment 1: Visualization Design for Small Dataset |
+| 20250916 | 基础理论     | 数据基础及基本数据可视化方法               | 第三周 | Assignment 1: Visualization Design for Small Dataset |
+| 20250923 | 基础理论     | 可视化视觉编码                             | 第四周 | Assignment 1: Visualization Design for Small Dataset |
+| 20250930 | 基础理论     | 可视化图形感知                             | 第五周 | Assignment 2: Deceptive Visualization      |
+| 20251007 | 基础理论     | 数据可视化中的色彩计算                     | 第六周 | Assignment 2: Deceptive Visualization      |
+| 20251014 | 基础理论     | 数据可视化效果评估与用户实验               | 第七周 | Assignment 2: Deceptive Visualization      |
+| 20251021 | 基础理论     | 多变量数据可视化                           | 第八周 | Assignment 3: Data Reduction               |
+| 20251028 | 基础理论     | 高维数据可视化                             | 第九周 | Assignment 3: Data Reduction               |
+| 20251104 | 信息可视化   | 层次数据可视化                             | 第十周 | Assignment 4: Visualizing Intertwined Trees |
+| 20251111 | 信息可视化   | 网络数据可视化                             | 第十一周 | Assignment 5: Visualizing Network Data     |
+| 20251118 | 信息可视化   | 文本信息可视化                             | 第十二周 | Assignment 5: Visualizing Network Data     |
+| 20251125 | 科学可视化   | 标量场数据可视化                           | 第十三周 | Assignment 5: Visualizing Network Data     |
+| 20251201 | 科学可视化   | 直接体绘制                                 | 第十四周 | Assignment 6: Final Project                |
+| 20251208 | 可视化与交互 | 可视化中的交互                             | 第十五周 | Assignment 6: Final Project                |
+| 20251215 | 可视化与交互 | 项目汇报                                   | 第十六周 | Assignment 6: Final Project                |
 
 <!-- ### 希望你
 
