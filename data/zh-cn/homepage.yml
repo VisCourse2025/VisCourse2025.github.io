@@ -31,8 +31,8 @@ items:
     #heading: Recent Posts
     content_type: posts
     max: 4
-  # - type: cta
-  #   contents: ¿Estás preparado para continuar tu búsqueda?
-  #   button:
-  #     contents: Inserta Moneda
-  #     url: "#"
+  - type: cta
+    contents: Visualization Techniques (2023)
+    button:
+      contents: 访问
+      url: "https://sduvis.github.io/"
