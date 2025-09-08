@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1900年和2000年人口金字塔对比</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .axis-label {
+            font-size: 12px;
+        }
+        .male-1900 {
+            fill: steelblue;
+        }
+        .female-1900 {
+            fill: lightcoral;
+        }
+        .male-2000 {
+            fill: rgb(0, 94, 255);
+        }
+        .female-2000 {
+            fill: rgb(255, 72, 0);
+        }
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            width: 400px;
+            height: auto;
+            padding: 20px;
+            font: 12px sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+        #charts {
+            display: flex;
+            justify-content: space-around;
+        }
+        .chart-container {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">1900年和2000年美国人口金字塔对比</h2>
+    <div id="chart"></div>
+
+    <script>
+        const margin = { top: 30, right: 40, bottom: 60, left: 100 };
+        const width = 1440 - margin.left - margin.right;
+        const height = 700 - margin.top - margin.bottom;
+
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        function handleMouseOver(event, d) {
+            tooltip.transition().duration(200).style("opacity", .9);
+            tooltip.html(`年龄段: ${d.age}<br>年份: ${d.year}<br>男性: ${d.male}<br>女性: ${d.female}`)
+                .style("left", (event.pageX + 5) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        }
+
+        function handleMouseOut() {
+            tooltip.transition().duration(500).style("opacity", 0);
+        }
+        // 设置图例内容
+        function addLegend(chart, width) {
+            const legend = chart.append("g")
+                .attr("class", "legend")
+                .attr("transform", `translate(${width - 100}, 0)`);
+
+            legend.append("rect")
+                .attr("x", -140)
+                .attr("y", 0)
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "steelblue");
+            legend.append("text")
+                .attr("x", -120)
+                .attr("y", 12)
+                .text("男性(浅色为1900，深色为2000)");
+
+            legend.append("rect")
+                .attr("x", -140)
+                .attr("y", 20)
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "lightcoral");
+            legend.append("text")
+                .attr("x", -120)
+                .attr("y", 32)
+                .text("女性(浅色为1900，深色为2000)");
+        }
+        function drawPyramid(data) {
+            const chart = d3.select("#chart")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const x = d3.scaleLinear()
+                .domain([-d3.max(data, d => d.male), d3.max(data, d => d.female)])
+                .range([0, width]);
+
+            const y = d3.scaleBand()
+                .domain(data.map(d => d.age))
+                .range([0, height])
+                .padding(0.1);
+
+            chart.append("g")
+                .attr("class", "x-axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(x).ticks(5).tickFormat(d => Math.abs(d)));
+
+            chart.append("g")
+                .attr("class", "y-axis")
+                .call(d3.axisLeft(y));
+
+            chart.selectAll(".male-1900")
+                .data(data.filter(d => d.year === 1900))
+                .enter()
+                .append("rect")
+                .attr("class", "male-1900")
+                .attr("x", d => x(-d.male))
+                .attr("y", d => y(d.age))
+                .attr("width", d => x(0) - x(-d.male))
+                .attr("height", y.bandwidth())
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut);
+
+            chart.selectAll(".female-1900")
+                .data(data.filter(d => d.year === 1900))
+                .enter()
+                .append("rect")
+                .attr("class", "female-1900")
+                .attr("x", x(0))
+                .attr("y", d => y(d.age))
+                .attr("width", d => x(d.female) - x(0))
+                .attr("height", y.bandwidth())
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut);
+
+            chart.selectAll(".male-2000")
+                .data(data.filter(d => d.year === 2000))
+                .enter()
+                .append("rect")
+                .attr("class", "male-2000")
+                .attr("x", d => x(-d.male))
+                .attr("y", d => y(d.age) + y.bandwidth() / 2)
+                .attr("width", d => x(0) - x(-d.male))
+                .attr("height", y.bandwidth() / 2)
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut);
+
+            chart.selectAll(".female-2000")
+                .data(data.filter(d => d.year === 2000))
+                .enter()
+                .append("rect")
+                .attr("class", "female-2000")
+                .attr("x", x(0))
+                .attr("y", d => y(d.age) + y.bandwidth() / 2)
+                .attr("width", d => x(d.female) - x(0))
+                .attr("height", y.bandwidth() / 2)
+                .on("mouseover", handleMouseOver)
+                .on("mouseout", handleMouseOut);
+
+            chart.append("text")
+                .attr("class", "axis-label")
+                .attr("x", width / 2)
+                .attr("y", height + margin.bottom - 10)
+                .attr("text-anchor", "middle")
+                .text("人口数量");
+            addLegend(chart,width);
+        }
+
+        d3.csv('census2000.csv').then(function(data) {
+            const ageGroups = ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75-79', '80-84', '85-89', '90+'].reverse();
+            const ageLimits = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90].reverse();
+
+            const processData = (year) => {
+                const yearData = data.filter(d => +d.Year === year);
+                const maleData = yearData.filter(d => +d.Sex === 1);
+                const femaleData = yearData.filter(d => +d.Sex === 2);
+
+                return ageGroups.map((age, index) => {
+                    const ageLimit = ageLimits[index];
+                    const male = maleData.find(d => +d.Age === ageLimit)?.People || 0;
+                    const female = femaleData.find(d => +d.Age === ageLimit)?.People || 0;
+                    return {
+                        age: age,
+                        male: +male,
+                        female: +female,
+                        year: year
+                    };
+                });
+            };
+
+            const dataProcessed = processData(1900).concat(processData(2000));
+
+            drawPyramid(dataProcessed);
+        });
+    </script>
+</body>
+</html>
